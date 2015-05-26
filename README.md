@@ -310,6 +310,10 @@ package_provider, you must specify a local package_source.
 
 Location of RabbitMQ plugins.
 
+####`plugin_list`
+
+List of RabbitMQ plugins to install/enable.
+
 ####`port`
 
 The RabbitMQ port.

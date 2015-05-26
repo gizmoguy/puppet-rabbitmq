@@ -25,6 +25,7 @@ class rabbitmq(
   $repos_ensure               = $rabbitmq::params::repos_ensure,
   $manage_repos               = $rabbitmq::params::manage_repos,
   $plugin_dir                 = $rabbitmq::params::plugin_dir,
+  $plugin_list                = $rabbitmq::params::plugin_list,
   $rabbitmq_user              = $rabbitmq::params::rabbitmq_user,
   $rabbitmq_group             = $rabbitmq::params::rabbitmq_group,
   $rabbitmq_home              = $rabbitmq::params::rabbitmq_home,
@@ -93,6 +94,7 @@ class rabbitmq(
   }
   validate_string($node_ip_address)
   validate_absolute_path($plugin_dir)
+  validate_array($plugin_list)
   if ! is_integer($port) {
     validate_re($port, ['\d+','UNSET'])
   }
@@ -222,6 +224,15 @@ class rabbitmq(
       ensure  => present,
       require => Class['rabbitmq::install'],
       notify  => Class['rabbitmq::service'],
+    }
+  }
+
+  if (size($plugin_list) > 0) {
+    rabbitmq_plugin { $plugin_list:
+      ensure   => present,
+      require  => Class['rabbitmq::install'],
+      notify   => Class['rabbitmq::service'],
+      provider => 'rabbitmqplugins',
     }
   }
 
