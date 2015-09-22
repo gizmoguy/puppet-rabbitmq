@@ -52,10 +52,7 @@ class rabbitmq::config {
   $config_kernel_variables    = $rabbitmq::config_kernel_variables
   $cluster_partition_handling = $rabbitmq::cluster_partition_handling
   $file_limit                 = $rabbitmq::file_limit
-  $default_env_variables      =  {
-    'NODE_PORT'        => $port,
-    'NODE_IP_ADDRESS'  => $node_ip_address
-  }
+  $default_env_variables      =  {}
 
   # Handle env variables.
   $environment_variables = merge($default_env_variables, $rabbitmq::environment_variables)
