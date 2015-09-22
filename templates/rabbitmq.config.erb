@@ -77,8 +77,8 @@
                   <%- end -%>
                  ]}
 <%- else -%>
-<%- if @interface != 'UNSET' -%>
-      {ip, "<%= @interface %>"},
+<%- if @management_ip != 'UNSET' -%>
+      {ip, "<%= @management_ip %>"},
 <%- end -%>
       {port, <%= @management_port %>}
 <%- end -%>

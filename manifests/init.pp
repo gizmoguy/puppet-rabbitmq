@@ -14,6 +14,7 @@ class rabbitmq(
   $env_config_path            = $rabbitmq::params::env_config_path,
   $erlang_cookie              = $rabbitmq::params::erlang_cookie,
   $interface                  = $rabbitmq::params::interface,
+  $management_ip              = $rabbitmq::params::management_ip,
   $management_port            = $rabbitmq::params::management_port,
   $node_ip_address            = $rabbitmq::params::node_ip_address,
   $package_apt_pin            = $rabbitmq::params::package_apt_pin,
@@ -90,6 +91,7 @@ class rabbitmq(
   validate_string($env_config)
   validate_absolute_path($env_config_path)
   validate_string($erlang_cookie)
+  validate_string($mangement_ip)
   if ! is_integer($management_port) {
     validate_re($management_port, '\d+')
   }
