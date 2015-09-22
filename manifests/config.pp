@@ -32,6 +32,7 @@ class rabbitmq::config {
   $ssl_key                    = $rabbitmq::ssl_key
   $ssl_port                   = $rabbitmq::ssl_port
   $ssl_interface              = $rabbitmq::ssl_interface
+  $ssl_management             = $rabbitmq::ssl_management
   $ssl_management_port        = $rabbitmq::ssl_management_port
   $ssl_stomp_port             = $rabbitmq::ssl_stomp_port
   $ssl_verify                 = $rabbitmq::ssl_verify

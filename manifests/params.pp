@@ -97,6 +97,7 @@ class rabbitmq::params {
   $ssl_key                    = 'UNSET'
   $ssl_port                   = '5671'
   $ssl_interface              = 'UNSET'
+  $ssl_management             = false
   $ssl_management_port        = '15671'
   $ssl_stomp_port             = '6164'
   $ssl_verify                 = 'verify_none'

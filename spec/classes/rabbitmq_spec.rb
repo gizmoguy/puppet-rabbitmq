@@ -529,14 +529,6 @@ rabbitmq hard nofile 1234
       end
 
       context 'configuration setting' do
-        describe 'node_ip_address when set' do
-          let(:params) {{ :node_ip_address => '172.0.0.1' }}
-          it 'should set NODE_IP_ADDRESS to specified value' do
-            should contain_file('rabbitmq-env.config').
-              with_content(%r{NODE_IP_ADDRESS=172\.0\.0\.1})
-          end
-        end
-
         describe 'stomp by default' do
           it 'should not specify stomp parameters in rabbitmq.config' do
             should contain_file('rabbitmq.config').without({
@@ -812,6 +804,7 @@ rabbitmq hard nofile 1234
       describe 'ssl admin options with specific ssl versions' do
         let(:params) {
           { :ssl => true,
+            :ssl_management => true,
             :ssl_management_port => 5926,
             :ssl_cacert => '/path/to/cacert',
             :ssl_cert => '/path/to/cert',
@@ -834,7 +827,7 @@ rabbitmq hard nofile 1234
 
       describe 'ssl admin options' do
         let(:params) {
-          { :ssl => true,
+          { :ssl_management => true,
             :ssl_management_port => 3141,
             :ssl_cacert => '/path/to/cacert',
             :ssl_cert => '/path/to/cert',
@@ -855,7 +848,7 @@ rabbitmq hard nofile 1234
 
       describe 'admin without ssl' do
         let(:params) {
-          { :ssl => false,
+          { :ssl_management => false,
             :management_port => 3141,
             :admin_enable => true
         } }
@@ -869,7 +862,7 @@ rabbitmq hard nofile 1234
 
       describe 'ssl admin options' do
         let(:params) {
-          { :ssl => true,
+          { :ssl_management => true,
             :ssl_management_port => 3141,
             :ssl_cacert => '/path/to/cacert',
             :ssl_cert => '/path/to/cert',
@@ -890,7 +883,7 @@ rabbitmq hard nofile 1234
 
       describe 'admin without ssl' do
         let(:params) {
-          { :ssl => false,
+          { :ssl_management => false,
             :management_port => 3141,
             :admin_enable => true
         } }

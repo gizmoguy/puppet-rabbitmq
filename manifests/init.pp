@@ -41,6 +41,7 @@ class rabbitmq(
   $ssl_key                    = $rabbitmq::params::ssl_key,
   $ssl_port                   = $rabbitmq::params::ssl_port,
   $ssl_interface              = $rabbitmq::params::ssl_interface,
+  $ssl_management             = $rabbitmq::params::ssl_management,
   $ssl_management_port        = $rabbitmq::params::ssl_management_port,
   $ssl_stomp_port             = $rabbitmq::params::ssl_stomp_port,
   $ssl_verify                 = $rabbitmq::params::ssl_verify,
@@ -119,6 +120,7 @@ class rabbitmq(
   if ! is_integer($ssl_port) {
     validate_re($ssl_port, '\d+')
   }
+  validate_bool($ssl_management)
   if ! is_integer($ssl_management_port) {
     validate_re($ssl_management_port, '\d+')
   }

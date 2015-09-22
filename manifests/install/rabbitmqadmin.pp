@@ -1,7 +1,7 @@
 #
 class rabbitmq::install::rabbitmqadmin {
 
-  if($rabbitmq::ssl) {
+  if($rabbitmq::ssl_management) {
     $management_port = $rabbitmq::ssl_management_port
   }
   else {
