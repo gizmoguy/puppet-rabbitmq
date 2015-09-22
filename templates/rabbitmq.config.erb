@@ -58,6 +58,7 @@
 <%- end -%>
 <%- if @admin_enable -%>,
   {rabbitmq_management, [
+    {redirect_old_port, false},
     {listener, [
 <%- if @ssl -%>
       {port, <%= @ssl_management_port %>},
