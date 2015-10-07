@@ -67,6 +67,7 @@ class rabbitmq::params {
   $admin_enable               = true
   $management_ip              = 'UNSET'
   $management_port            = '15672'
+  $management_ssl             = true
   $package_apt_pin            = ''
   $package_gpg_key            = 'http://www.rabbitmq.com/rabbitmq-signing-key-public.asc'
   $repos_ensure               = true
@@ -98,7 +99,6 @@ class rabbitmq::params {
   $ssl_key                    = 'UNSET'
   $ssl_port                   = '5671'
   $ssl_interface              = 'UNSET'
-  $ssl_management             = false
   $ssl_management_port        = '15671'
   $ssl_stomp_port             = '6164'
   $ssl_verify                 = 'verify_none'
@@ -115,10 +115,11 @@ class rabbitmq::params {
   $ldap_log                   = false
   $ldap_config_variables      = {}
   $stomp_port                 = '6163'
+  $stomp_ssl_only             = false
   $wipe_db_on_cookie_change   = false
   $cluster_partition_handling = 'ignore'
   $environment_variables      = {}
   $config_variables           = {}
   $config_kernel_variables    = {}
-  $file_limit                 = 16384
+  $file_limit                 = '16384'
 }

@@ -221,6 +221,8 @@ RabbitMQ Environment Variables in rabbitmq_env.config
 
 The erlang cookie to use for clustering - must be the same between all nodes.
 This value has no default and must be set explicitly if using clustering.
+If you run Pacemaker and you don't want to use RabbitMQ buildin cluster, you can
+set config_cluster to 'False' and set 'erlang_cookie'.
 
 ####`file_limit`
 
@@ -271,6 +273,13 @@ Boolean, whether or not to manage package repositories.
 ####`management_port`
 
 The port for the RabbitMQ management interface.
+
+####`management_ssl`
+
+Enable/Disable SSL for the management port.
+Has an effect only if ssl => true.
+Default is true.
+Valid values are true or false.
 
 ####`node_ip_address`
 
@@ -384,6 +393,11 @@ Functionality can be tested with cipherscan or similar tool: https://github.com/
 ####`stomp_port`
 
 The port to use for Stomp.
+
+####`stomp_ssl_only`
+
+Configures STOMP to only use SSL.  No cleartext STOMP TCP listeners will be created.
+Requires setting ssl_stomp_port also.
 
 ####`stomp_ensure`
 
@@ -531,6 +545,28 @@ rabbitmq_plugin {'rabbitmq_stomp':
 }
 ```
 
+### rabbitmq\_parameter
+
+```puppet
+  rabbitmq_parameter { 'documentumShovel@/':
+    component_name => '',
+    value          => {
+        'src-uri'    => 'amqp://',
+        'src-queue'  => 'my-queue',
+        'dest-uri'   => 'amqp://remote-server',
+        'dest-queue' => 'another-queue',
+    },
+  }
+
+  rabbitmq_parameter { 'documentumFed@/':
+    component_name => 'federation-upstream',
+    value          => {
+        'uri'    => 'amqp://myserver',
+        'expires' => '360000',
+    },
+  }
+```
+
 ### rabbitmq\_erlang\_cookie
 
 This is essentially a private type used by the rabbitmq::config class
@@ -553,6 +589,10 @@ The module has been tested on:
 * Ubuntu 12.04/14.04
 
 Testing on other platforms has been light and cannot be guaranteed.
+
+### Apt module compatibility
+
+While this module supports both 1.x and 2.x versions of the puppetlabs-apt module, it does not support puppetlabs-apt 2.0.0 or 2.0.1.
 
 ### Module dependencies
 
