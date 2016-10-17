@@ -444,6 +444,10 @@ rabbitmq.config SSL verify setting.
 
 rabbitmq.config `fail_if_no_peer_cert` setting.
 
+####`ssl_honor_cipher_order`
+
+If set to true, use the server preference for cipher selection. If set to false (the default), use the client preference.
+
 ####`ssl_versions`
 
 Choose which SSL versions to enable. Example: `['tlsv1.2', 'tlsv1.1']`.

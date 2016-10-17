@@ -112,6 +112,7 @@ class rabbitmq::params {
   $ssl_stomp_port              = '6164'
   $ssl_verify                  = 'verify_none'
   $ssl_fail_if_no_peer_cert    = false
+  $ssl_honor_cipher_order      = false
   $ssl_versions                = undef
   $ssl_ciphers                 = []
   $stomp_ensure                = false

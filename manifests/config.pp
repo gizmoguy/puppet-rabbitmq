@@ -45,6 +45,7 @@ class rabbitmq::config {
   $ssl_stomp_port             = $rabbitmq::ssl_stomp_port
   $ssl_verify                 = $rabbitmq::ssl_verify
   $ssl_fail_if_no_peer_cert   = $rabbitmq::ssl_fail_if_no_peer_cert
+  $ssl_honor_cipher_order     = $rabbitmq::ssl_honor_cipher_order
   $ssl_versions               = $rabbitmq::ssl_versions
   $ssl_ciphers                = $rabbitmq::ssl_ciphers
   $stomp_port                 = $rabbitmq::stomp_port
