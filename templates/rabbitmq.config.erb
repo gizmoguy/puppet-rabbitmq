@@ -65,7 +65,7 @@
                    <%- end -%>
                    <%- if @ssl_ciphers and @ssl_ciphers.size > 0 -%>
                    ,{ciphers,[
-                     <%= @ssl_ciphers.sort.map{|k| "{#{k}}"}.join(",\n                     ") %>
+                     <%= @ssl_ciphers.map{|k| "{#{k}}"}.join(",\n                     ") %>
                    ]}
                    <%- end -%>
                   ]},
