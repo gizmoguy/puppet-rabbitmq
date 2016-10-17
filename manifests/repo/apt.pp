@@ -14,10 +14,7 @@ class rabbitmq::repo::apt(
 
   $pin = $rabbitmq::package_apt_pin
 
-  # ordering / ensure to get the last version of repository
-  Class['rabbitmq::repo::apt']
-  -> Class['apt::update']
-  -> Package<| title == 'rabbitmq-server' |>
+  Class['rabbitmq::repo::apt'] -> Package<| title == 'rabbitmq-server' |>
 
   $ensure_source = $rabbitmq::repos_ensure ? {
     false   => 'absent',
