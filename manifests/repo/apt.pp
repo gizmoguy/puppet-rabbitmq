@@ -2,7 +2,7 @@
 #   puppetlabs-apt
 #   puppetlabs-stdlib
 class rabbitmq::repo::apt(
-  $location     = 'http://www.rabbitmq.com/debian/',
+  $location     = 'https://www.rabbitmq.com/debian/',
   $release      = 'testing',
   $repos        = 'main',
   $include_src  = false,
